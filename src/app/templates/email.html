@@ -1,0 +1,10 @@
+<md-item layout="row" class="message" ng-class="{expanded: vmEmail.expanded}" ng-click="vmEmail.toggle()">
+        <div>
+            <img class="round-face" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRM4hAtrv3LNYkpR9NiUR-ED2QG8x6SMFB-uzPihaQZrXG1PGmX" alt="dd" style="">
+        </div>
+        <div class="collapsed-row message-text" layout="row" layout-align="start center" flex >
+            <span flex="45" class="message-subject">{{vmEmail.message.title}}</span>
+            <span flex="45" class="message-body" >{{vmEmail.message.snippet}}</span>
+            <span flex="5"></span>
+        </div>
+</md-item>

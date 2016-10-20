@@ -1,0 +1,11 @@
+<md-list>
+    <md-subheader style="background: #ebebeb; color: #000;">{{vmEmailGroupList.group.title}}</md-subheader>
+    <md-item>
+        <md-list-item ng-repeat="message in vmEmailGroupList.group.messages track by $index">
+            <md-card style="width: 100%">
+                <email message="message" style="width: 100%;"></email>
+            </md-card>
+        </md-list-item>
+    </md-item>
+</md-list>
+
