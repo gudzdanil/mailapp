@@ -22,3 +22,12 @@ body {
     white-space: normal;
     overflow: visible;
 }
+
+[scroll]{
+    position: fixed;
+    top: 0;
+}
+.loader img{
+    background: #ebebeb;
+    color: rgb(63,81,181);
+}

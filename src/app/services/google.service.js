@@ -44,12 +44,13 @@ GoogleService.prototype.login = function (callback) {
     gapi.auth.signIn(myParams);
     this.loginCallback = callback;
 };
-GoogleService.prototype.getMessages = function () {
+GoogleService.prototype.getMessages = function (nextPage) {
     var defer = this._$q.defer();
-
     var userId = "me";
     gapi.client.gmail.users.messages.list({
-        'userId': userId
+        'userId': userId,
+        'maxResults': 20,
+        pageToken: nextPage
     }).execute(function (resp) {
         var messages = resp.messages;
         var messagesArr = [];
@@ -59,10 +60,10 @@ GoogleService.prototype.getMessages = function () {
                 'id': messages[i].id
             }).execute(onMessageReceived);
         }
-        function onMessageReceived(resp) {
-            messagesArr.push(resp);
+        function onMessageReceived(resp2) {
+            messagesArr.push(resp2);
             if (messagesArr.length === messages.length) {
-                defer.resolve(messagesArr);
+                defer.resolve( {messages: messagesArr, next_page: resp.nextPageToken});
             }
         }
     });
